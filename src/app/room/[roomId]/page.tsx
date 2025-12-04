@@ -5,11 +5,6 @@ import { useSearchParams, useRouter, useParams } from "next/navigation";
 import { useRoom } from '../../../hooks/useRoom';
 import { VideoPlayer } from '../../../components/VideoPlayer';
 
-interface LocationState {
-  displayName: string;
-  initialConfig: { audio: boolean; video: boolean };
-}
-
 export default function MeetingRoom() {
   const { roomId } = useParams();
   const router = useRouter();
