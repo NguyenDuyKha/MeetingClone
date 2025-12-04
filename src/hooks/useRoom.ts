@@ -171,7 +171,8 @@ export const useRoom = (roomId: string, userDisplayName: string, localStream: Me
           await pc.setRemoteDescription(new RTCSessionDescription(payload));
 
           // 2️⃣ Prevent calling createAnswer when not ready
-          if (pc.signalingState === "have-remote-offer") {
+          const isRemoteOfferState = (state: RTCSignalingState) => state === "have-remote-offer";
+          if (isRemoteOfferState(pc.signalingState)) {
             const answer = await pc.createAnswer();
             await pc.setLocalDescription(answer);
 
