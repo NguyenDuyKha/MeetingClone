@@ -168,7 +168,7 @@ export default function MeetingRoom() {
             // Grid View (No Pinned) - Dynamic grid with pagination
             <div className="w-full h-full flex items-center justify-center relative">
               <div
-                className={`w-full h-full p-4 grid gap-4`}
+                className={`w-full h-full grid gap-4`}
                 style={{
                   gridTemplateColumns: `repeat(${grid.cols}, minmax(0, 1fr))`,
                   gridTemplateRows: `repeat(${grid.rows}, minmax(0, 1fr))`
@@ -199,7 +199,7 @@ export default function MeetingRoom() {
 
               {/* Pagination Controls */}
               {totalPages > 1 && (
-                <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex items-center gap-3 z-20 bg-black/40 backdrop-blur-md px-2 py-2 rounded-lg border border-gray-600/30">
+                <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex items-center gap-3 z-20 bg-black/40 backdrop-blur-md px-2 py-2 rounded-lg border border-gray-600/30">
                   <button
                     onClick={() => setPage(p => Math.max(1, p - 1))}
                     disabled={page === 1}
@@ -268,7 +268,10 @@ export default function MeetingRoom() {
             </div>
 
             {/* Scrollable Participant List */}
-            <div className="flex-1 overflow-y-auto custom-scrollbar">
+            <div
+              className="flex-1 overflow-y-auto hide-scrollbar"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
               <div className="p-3 space-y-2">
 
                 {/* Local User */}
